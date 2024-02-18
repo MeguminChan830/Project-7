@@ -1,0 +1,103 @@
+megumin@megumin:~/go/my-project$ docker compose -f docker-compose.yml up
+WARN[0000] Found orphan containers ([client my-project-mongo-express-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. 
+[+] Running 2/0
+ ✔ Container mongo   Created                                                                                                                               0.0s 
+ ✔ Container server  Created                                                                                                                               0.0s 
+Attaching to mongo, server
+mongo   | 2024-02-18T05:34:17.340+0000 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=47ccb5121df0
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] db version v4.2.0
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] git version: a4b751dcf51dd249c5865812b390cfd1c0129c30
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.1.1  11 Sep 2018
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] allocator: tcmalloc
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] modules: none
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] build environment:
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten]     distmod: ubuntu1804
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten]     distarch: x86_64
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten]     target_arch: x86_64
+mongo   | 2024-02-18T05:34:17.342+0000 I  CONTROL  [initandlisten] options: { net: { bindIp: "*" } }
+mongo   | 2024-02-18T05:34:17.343+0000 I  STORAGE  [initandlisten] Detected data files in /data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+mongo   | 2024-02-18T05:34:17.343+0000 I  STORAGE  [initandlisten] 
+mongo   | 2024-02-18T05:34:17.343+0000 I  STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+mongo   | 2024-02-18T05:34:17.343+0000 I  STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+mongo   | 2024-02-18T05:34:17.343+0000 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=2345M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
+mongo   | 2024-02-18T05:34:18.411+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234458:411127][1:0x7ff7b9bd3b00], txn-recover: Recovering log 6 through 7
+mongo   | 2024-02-18T05:34:18.515+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234458:515443][1:0x7ff7b9bd3b00], txn-recover: Recovering log 7 through 7
+mongo   | 2024-02-18T05:34:18.750+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234458:750156][1:0x7ff7b9bd3b00], txn-recover: Main recovery loop: starting at 6/6016 to 7/256
+mongo   | 2024-02-18T05:34:18.983+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234458:983166][1:0x7ff7b9bd3b00], txn-recover: Recovering log 6 through 7
+mongo   | 2024-02-18T05:34:19.201+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234459:201268][1:0x7ff7b9bd3b00], txn-recover: Recovering log 7 through 7
+mongo   | 2024-02-18T05:34:19.337+0000 I  STORAGE  [initandlisten] WiredTiger message [1708234459:337761][1:0x7ff7b9bd3b00], txn-recover: Set global recovery timestamp: (0,0)
+mongo   | 2024-02-18T05:34:19.650+0000 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+mongo   | 2024-02-18T05:34:19.659+0000 I  STORAGE  [initandlisten] Timestamp monitor starting
+mongo   | 2024-02-18T05:34:19.756+0000 I  CONTROL  [initandlisten] 
+mongo   | 2024-02-18T05:34:19.756+0000 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+mongo   | 2024-02-18T05:34:19.756+0000 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+mongo   | 2024-02-18T05:34:19.757+0000 I  CONTROL  [initandlisten] 
+server  | 
+server  | > project-mgmt-app@1.0.0 start
+server  | > node index.js
+server  | 
+mongo   | 2024-02-18T05:34:19.775+0000 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.777+0000 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
+mongo   | 2024-02-18T05:34:19.778+0000 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.779+0000 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.780+0000 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.781+0000 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+mongo   | 2024-02-18T05:34:19.784+0000 I  SHARDING [LogicalSessionCacheRefresh] Marking collection config.system.sessions as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.785+0000 I  NETWORK  [initandlisten] Listening on /tmp/mongodb-27017.sock
+mongo   | 2024-02-18T05:34:19.785+0000 I  NETWORK  [initandlisten] Listening on 0.0.0.0
+mongo   | 2024-02-18T05:34:19.787+0000 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+mongo   | 2024-02-18T05:34:19.787+0000 I  NETWORK  [initandlisten] waiting for connections on port 27017
+server  | mongodb://localhost:27017/my-database
+server  | Server of Megumin Starting on Port 5000
+server  | /app/node_modules/mongoose/lib/connection.js:807
+server  |   const serverSelectionError = new ServerSelectionError();
+server  |                                ^
+server  | 
+server  | MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+server  |     at NativeConnection.Connection.openUri (/app/node_modules/mongoose/lib/connection.js:807:32)
+server  |     at /app/node_modules/mongoose/lib/index.js:343:10
+server  |     at /app/node_modules/mongoose/lib/helpers/promiseOrCallback.js:32:5
+server  |     at new Promise (<anonymous>)
+server  |     at promiseOrCallback (/app/node_modules/mongoose/lib/helpers/promiseOrCallback.js:31:10)
+server  |     at Mongoose._promiseOrCallback (/app/node_modules/mongoose/lib/index.js:1181:10)
+server  |     at Mongoose.connect (/app/node_modules/mongoose/lib/index.js:342:20)
+server  |     at connectDB (/app/config/db.js:4:32)
+server  |     at Object.<anonymous> (/app/index.js:12:1)
+server  |     at Module._compile (node:internal/modules/cjs/loader:1198:14) {
+server  |   reason: TopologyDescription {
+server  |     type: 'Unknown',
+server  |     servers: Map(1) {
+server  |       'localhost:27017' => ServerDescription {
+server  |         _hostAddress: HostAddress { isIPv6: false, host: 'localhost', port: 27017 },
+server  |         address: 'localhost:27017',
+server  |         type: 'Unknown',
+server  |         hosts: [],
+server  |         passives: [],
+server  |         arbiters: [],
+server  |         tags: {},
+server  |         minWireVersion: 0,
+server  |         maxWireVersion: 0,
+server  |         roundTripTime: -1,
+server  |         lastUpdateTime: 251919811,
+server  |         lastWriteDate: 0,
+server  |         error: MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+server  |             at connectionFailureError (/app/node_modules/mongodb/lib/cmap/connect.js:375:20)
+server  |             at Socket.<anonymous> (/app/node_modules/mongodb/lib/cmap/connect.js:295:22)
+server  |             at Object.onceWrapper (node:events:628:26)
+server  |             at Socket.emit (node:events:513:28)
+server  |             at emitErrorNT (node:internal/streams/destroy:157:8)
+server  |             at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+server  |             at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+server  |           [Symbol(errorLabels)]: Set(0) {}
+server  |         }
+server  |       }
+server  |     },
+server  |     stale: false,
+server  |     compatible: true,
+server  |     heartbeatFrequencyMS: 10000,
+server  |     localThresholdMS: 15,
+server  |     logicalSessionTimeoutMinutes: undefined
+server  |   },
+server  |   code: undefined
+server  | }

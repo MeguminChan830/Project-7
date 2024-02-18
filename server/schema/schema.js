@@ -8,8 +8,20 @@ const {
     GraphQLString,
     GraphQLList,
     GraphQLNonNull,
-    GraphQLEnumType
+    GraphQLEnumType,
 }= require('graphql')
+
+
+const ClientType= new GraphQLObjectType({
+    name: 'Client',
+    fields:{
+        id: {type: GraphQLString},
+        name: {type: GraphQLString},
+        email: {type: GraphQLString},
+        phone: {type: GraphQLString}
+    }
+})
+
 const ProjectType= new GraphQLObjectType({
     name: 'Project',
     fields:{
@@ -26,15 +38,6 @@ const ProjectType= new GraphQLObjectType({
     }
 })
 
-const ClientType= new GraphQLType({
-    name: 'Client',
-    fields:{
-        id: {type: GraphQLString},
-        name: {type: GraphQLString},
-        email: {type: GraphQLString},
-        phone: {type: GraphQLString}
-    }
-})
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -67,7 +70,7 @@ const RootQuery = new GraphQLObjectType({
         }
     }
 })
-const mutation= new GraphQLType({
+const mutation= new GraphQLObjectType({
     name: "Mutation",
     fields: {
         addClient:{
@@ -100,7 +103,7 @@ const mutation= new GraphQLType({
                 return Client.findByIdAndRemove(args.id)
             }
         },
-        addProjects:{
+        addProject:{
             type: ProjectType,
             args: {
                 name: {type: GraphQLString},
@@ -110,13 +113,15 @@ const mutation= new GraphQLType({
                         name: "ProjectStatus",
                         values: {
                             new: {value: "Not Started"},
-                            progess: {value: "In Progess"},
+                            progress: {value: "In Progress"},
                             completed: {value: "Completed"}
                         }
                     }),
                     defaultValue: "Not Started"
                 },
-                resolve(parent, args){
+                clientId: {type: GraphQLNonNull(GraphQLID)}
+            },
+            resolve(parent, args){
                     const project= new Project({
                         name: args.name,
                         desc: args.desc,
@@ -125,7 +130,6 @@ const mutation= new GraphQLType({
                     })
                     return project.save()
                 }
-            }
         },
         deleteProject:{
             type: ProjectType,
@@ -133,7 +137,7 @@ const mutation= new GraphQLType({
                 id: {type: GraphQLNonNull(GraphQLID)}
             },
             resolve(parent, args){
-                return Project.findByAdAndRemove(args.id)
+                return Project.findByIdAndRemove(args.id)
             }
         },
         updateProject:{
@@ -152,9 +156,10 @@ const mutation= new GraphQLType({
                         }
                     })
                 },
-                resolve(parent, args){
-                    return Project.findByIdAndUpdate(
-                        args.id,
+            },
+            resolve(parent, args){
+                return Project.findByIdAndUpdate(
+                    args.id,
                         {
                             $set:{
                                 name: args.name,
@@ -165,7 +170,6 @@ const mutation= new GraphQLType({
                         {new: true}
                     )
                 }
-            }
         }
     }
 })
